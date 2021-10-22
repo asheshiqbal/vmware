@@ -1,0 +1,175 @@
+#############
+## VCP-DCV ## 
+#############
+
+*** Software Defined Data Center (SDDC) - virtualization of server, storage and network
+	vCenter = SDDC
+	vSphere = Hypervisor
+	ESXi = Host + vSphere
+
+*** vCLS - vSphere Cluster Services
+
+*** Management:
+	Host Client - ESXi host web management console
+	vSphere Client/vCenter - central management of ESXi hosts
+		deployment - vCSA (vCenter Server Appliance)
+			     Note: an appliance must be a VM
+	VAMI (vCenter Appliance Management Interface) - port 5480
+
+*** vMotion - live migration
+	Compute
+	Storage
+
+*** Features:
+	Template
+	High Availability
+	Fault Tolerance
+	Proactive
+	Host Profiles
+	Content Libraries
+
+*** Minimum hardware requirements for ESXi:
+	CPU: 2 cores
+	RAM: 4 GB
+	Disk: 8GB/32GB
+
+*** Direct Console User Interface (DCUI) - network address & misc. configuration for ESXi host
+
+*** vSS (vSphere Standard Switch) - layer 2 switching, upto 16 per host, default networking on ESXi host, requires configuration per host basis, no centralized management
+	Port - upto 1016 active ports per vSwitch
+	Port Group - group of logical ports in a vSwitch, upto 512 per vSS
+		VM Network - default port group for VMs
+		Management Network - default port group for vmk0
+	vNIC - logical NIC of a Guest
+	vmnic - physical NIC of a Host, aka Uplink
+	vmkernel - logical layer 3 interface of a Host
+
+*** vDS (vSphere Distributed Switch) - model/framework/template for an ideal switch, centrally manageable
+	Features:
+		Port Mirroring
+		Port Blocking
+		Private VLAN
+		LLDP/CDP
+		Teaming/LACP
+		Ingress & Egress Traffice Shaping
+		NetFlow
+
+*** Storage
+	Datastore
+		SAN - iSCSI/FC
+		NAS - NFS
+	VMFS - allows multiple hosts to mount and write in same LUN
+	Multipathing - Fault tolerance
+	PSA (Pluggable Storage Architecture)
+		Native Multipathing Plugin (NMP)
+			Storage Array Type Plugin (SATP)
+			Path Selection Plugin (PSP) - RR/MRU/FIXED
+				# esxcli storage nmp device list
+				# esxcli storage nmp satp list
+	vSAN - Cache tier & Capacity tier
+		Storage Policies - API/Tag based
+		File Services - NAS (NFS/SMB)
+*** VM
+	Cloning - VM to VM, VM to Template, Template to VM, Template to Template
+	Template
+	VMware Tools - better communication between guest and host
+	
+*** Distributed Resource Scheduler (DRS) - provisions compute resource from a cluster of ESXi hosts
+	applied on cluster basis
+	Prerequisite: vMotion
+	Modes: Auto & Suggest
+
+**** vSphere HA
+	applied at cluster level
+	Heartbeats - Network & Datastore
+	One host is Primary and rest are Secondary
+	Host Failure
+	Host Isolation
+	VMCP (VM Component Protection)
+		PDL (Permanent Device Loss)
+		APD (All Paths Down)
+	Advanced settings (changing default isolation address)
+		das.usedefaultisolationaddress false
+		das.isolationaddress1 192.168.1.100
+
+*** vSphere VM Fault Tolerance (FT)
+	Primary copy of VM ---replication---> Secondary copy of VM
+	vmkernel service - FT Logging
+	License - max 2 vCPU in Standard & Enterprise, max 8 vcPU in Enterprise Plus
+	Reservation
+	Admission Control - ensures resource reservation for HA in a cluster
+	not supported - snapshot, vMotion
+	EVC (Enhanced vMotion Compatibility) - fixing lowest common denominator in a cluster of hosts with different processors
+	
+*** Resource Pools
+	created at cluster level, ensures CPU/RAM for VMs
+	Reservation - guaranteed lower bound
+	Limit - fixed upper bound
+	Shares - ratio based resource allocation (similar to QoS in networking)
+	
+*** NIOC (Network I/O Control)
+	available in Distributed Switches
+	Reservation, Limit, Shares can be set for bandwidth
+	Network Resource Pools - created on vDS and assigned to DPGs
+
+*** SDRS (Storage DRS)
+	Storage Cluster of Datastores - requires the datastores to be of same type, i.e. mix of SAN & NAS not supported
+		I/O Metric Inclusion
+		I/O Latency Threshold
+		Space Threshold
+	Storage vMotion
+	VASA (vSphere API for Storage Awareness) - ablility of ESXi host to communicate with storage array to determine it's capability
+	VAAI (vSphere API for Array Integration)
+	
+*** SIOC (Storage I/O Control)
+	Limit, Shares can be set for storage access
+	
+*** Content Library
+	local to a vCenter, can be published and subscribed by another vCenter
+
+*** vApp - group of VMs, startup/shutdown order can be set per group
+	
+*** Snapshot - restore point, consists of Base Disk + Delta Disks
+	vmsd file = vmdk file (disk) + vmsn file (RAM)
+
+*** Updates
+	vCSA update - vCSA management console (port 5480)
+		Backup should be taken of the vCenter configuration before updating
+	ESXi update - use Life Cycle Manager to manage the cluster with a single image
+	VM Hardware Compatibility
+	VMware Tools
+
+*** Host Profiles
+	create in the Policies & Profiles menu
+	attach to a cluster
+	check compliance and remediate if necessary
+
+*** Affinity - rules that impose restrictions on which group of hosts a group of VMs can run
+
+*** Identity Sources
+	SSO Domain - should be different from the AD domain
+	System Domain/vSphere SSO - default: vsphere.local
+	AD Domain - integration over LDAP/direct
+	
+*** Performance Monitoring
+	Parameters: CPU - %RDY (waiting time of a VM to get CPU cycles), RAM - SWAP, Disk - I/O, Network - I/O
+	Tools:
+		Performance Chart
+		Skyline Health (CEIP subscription)
+		ESXi CLI - esxtop (V = vm-wise, h = help)
+		vCSA CLI - vimtop (k = disk, o = network, esc = main-panel, a = sort-ascending, d = sort-descending, h = help)
+*** Security
+	VMCA (VMware Ceritificate Authority)
+	vTA (vSphere Trust Authority)
+	TPM (Trusted Platform Module)
+	SGX (Software Guard Extensions)
+	
+*** Misc.
+	VM Auto Start
+	Instant Clone
+		Object Reference
+	Lifecycle Manager
+		Quick Boot
+	ESXi Host Auto Deploy
+	vCenter HA
+	vSphere Replication

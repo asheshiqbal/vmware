@@ -1,0 +1,63 @@
+##############
+### VCP-NV ### 
+##############
+
+*** SDN (Software Defined Network) - decoupling of Management Plane (MP) & Control Plane (CP) elements from the Data Plane (DP)
+	Only the DP exists in the Switching component
+	CP and MP exist elsewhere
+	In SDN, the central CP has a holistic view of the infrastructure.
+	Microsegmentation - DMZ Anywhere (even at VM's VLAN not only at perimeter)
+	
+*** NSX Terminology
+	Segment - logical switch
+	Distributed Logical Router
+	Distributed Firewall (DFW) - East-West
+	Gateway Firewall - North-South
+	Edge Service Gateway
+	Compute Manager - vCenter
+
+*** Overlay Network - a network created on top of underlying physical infra using tunneling between endpoints
+	Underlay/VLAN backed Network - Physical infrastructure, does not need to know about the Overlay network
+	GENEVE - similiar to VXLAN
+		overlay encapsulation protocol, creates a DP tunnel, stretches network over L2 boundary, requires Jumbo MTU (> 1600 bytes) for the Transport VLAN
+		TEP (Tunnel End Point) - host IP created by NSX-T 
+		VNI (Virtual Network Identifier) - "overlay VLAN", a network segment similar to VLAN/broadcast domain
+
+*** NSX-T Architecture
+	NSX-T Manager Appliance - MP & CP
+		3 nodes required in production, MP is Active-Standby-Standby and CP is Active-Active-Active
+	NSX-T Edge Appliance - DP
+	NSX-T VIB (VMware Installation Bundle) - DP 
+
+*** NSX-T CP
+	ARP table - Guest IP, Guest MAC
+	MAC table - Guest MAC, Host IP
+	TEP table - Host IP, Host MAC
+
+*** Transport Nodes - any hosts/appliance on the DP prepped with NSX
+	check if prepped: esxcli software vib list
+	nsxcli: get ?
+	N-vDS (NSX vDS) - created by NSX-T Manager in vSphere < 7, requires dedicated uplinks
+	Converged VDS - possible in vSphere > 7
+	
+*** Transport Zones - define span of logical segments
+	when segments are tied to the transport zone on a host, all VMs get access to those segments
+	Overlay type - supports overlay segments
+	VLAN-backed type - supports VLAN segments
+
+*** Edge Cluster
+	Edge Node - on/off ramp for the overlay network
+	Tier-0 (T0) - communicates with outside physical network via BGP/Static routing
+	Tier-1 (T1) - tenant router
+	ECMP (Equal Cost Multi Path)
+
+*** BUM (Broadcast, Unknown unicast, Multicast) Traffic Handling
+	Head-End Replication - in case of same TEP VLAN
+	Two Tier Hierarchical Replication - in case of same/different TEP VLAN
+
+*** Logical Routing
+	each T0/T1 has 2 components:
+		DR (Distributed Router) - E-W routing, located in host and transport nodes
+		SR (Service Router) - N-S routing, located in edge nodes
+	Route Advertisement - from T1 to T0
+	Route Redistribution - from T0 to Underlay
