@@ -57,7 +57,7 @@
 
 *** Logical Routing
 	each T0/T1 has 2 components:
-		DR (Distributed Router) - E-W routing, located in host and transport nodes
-		SR (Service Router) - N-S routing, located in edge nodes
+		DR (Distributed Router) - E-W routing, located in all host transport nodes
+		SR (Service Router) - N-S routing, located only in edge nodes
 	Route Advertisement - from T1 to T0
 	Route Redistribution - from T0 to Underlay
