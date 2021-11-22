@@ -3,9 +3,9 @@
 #############
 
 *** Software Defined Data Center (SDDC) - virtualization of server, storage and network
+	ESXi = hypervisor
 	vCenter = SDDC
-	vSphere = Hypervisor
-	ESXi = Host + vSphere
+	vSphere = ESXi + vCenter
 
 *** vCLS - vSphere Cluster Services
 
