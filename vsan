@@ -2,6 +2,20 @@
 ##### vSAN #####
 ################
 
+*** Each host can have upto 5 disk groups each with 1 cache and upto 7 capacity disks
+
 *** Object Based Storage - stores data as unstructured objects
         Object
         Component
+
+*** Features
+        SPBM (Storage Policy Based Management)
+        All Flash Support
+                Deducplication
+                Compression
+                Erasure Coding
+        Streched Cluster Support
+        Data At Rest Encryption
+        vROPS Integration
+        QoS IOPS Configuration
+        
