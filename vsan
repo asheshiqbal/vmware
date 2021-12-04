@@ -20,3 +20,9 @@
         QoS IOPS Configuration
         
 *** Design Considerations
+        Hybrid - uses 70% of the cache tier as read cache and 30% as write buffer
+        All Flash - uses 100% of the cache tier as write buffer and reads are serviced directly by the capacity tier
+        Hosts To Tolerate Formula = 2 * PFTT + 1
+                                  = 2 * FTT + 2 (Mirroring Configuration with allow for active rebuilds)
+                                  = 2n + 2 (All Flash Erasure Coding}
+                                  = 2n + 3 (All Flash Erasure Coding with allow for active rebuilds)
