@@ -20,8 +20,8 @@
         vROPS Integration
         QoS IOPS Configuration
 
-*** Fault Domain
-        vSAN has Rack Awareness
+*** Fault Domain - hosts that can fail together
+        vSAN can be made Rack Aware
         
 *** Design Considerations
         Hybrid - uses 70% of the cache tier as read cache and 30% as write buffer
