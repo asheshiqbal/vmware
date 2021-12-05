@@ -33,3 +33,8 @@
         Recommendation for Scaling
                 Scale Up - maintain balance across the cluster
                 Scale Out - same amount as the existing hosts
+
+*** Storage Policy
+        Failures to Tolerate
+        Site Disaster Tolerance
+        
