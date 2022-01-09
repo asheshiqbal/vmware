@@ -2,3 +2,10 @@
 ##### vRA #####
 ###############
 
+*** Components
+          Cloud Assembly - assemple VMs/Instances into Blueprint
+          Service Broker - creates self-service catalog
+          Code Stream
+
+*** Architecture
+          
