@@ -2,7 +2,7 @@
 ### VCP-CMA ### 
 ###############
 
-*** Automation - faster resource provisioning, more consistency, minimization of human error, scalability
+*** Automation - faster resource provisioning, more consistency, minimization of human error, scalability/repeatability
           vRA (vRealize Automation) - automates the provisioning of IT infrastructure, with/without Self Service, including approval chain
 
 *** Components
@@ -11,4 +11,5 @@
           Code Stream
 
 *** Architecture
+          vRLCM + VIDM + vRA
           
