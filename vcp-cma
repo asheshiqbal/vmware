@@ -1,7 +1,12 @@
+###############
+### VCP-CMA ### 
+###############
+
 *** Automation - faster resource provisioning, more consistency, minimization of human error, scalability
+          vRA (vRealize Automation) - automates the provisioning of IT infrastructure, with/without Self Service, including approval chain
 
 *** Components
-          Cloud Assembly - assemple VMs/Instances into Blueprint
+          Cloud Assembly - assembles VMs/Instances into Blueprint
           Service Broker - creates self-service catalog
           Code Stream
 
