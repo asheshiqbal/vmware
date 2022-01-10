@@ -3,12 +3,12 @@
 ###############
 
 *** Automation - faster resource provisioning, more consistency, minimization of human error, scalability/repeatability
-          vRA (vRealize Automation) - automates the provisioning of IT infrastructure, with/without self-service, including approval chain
+          vRA (vRealize Automation) - cloud management platform, automates the provisioning of IT infrastructure, with/without self-service, including approval chain
 
 *** Components
           Cloud Assembly - assembles VMs/Instances into Blueprint
           Service Broker - creates Self-Service catalog
-          Orchestrator - 
+          Orchestrator - scripting
           Code Stream - CI/CD
 
 *** Architecture
