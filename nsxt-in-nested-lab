@@ -1,0 +1,25 @@
+Physical Resource:
+        Server: 1x DELL R830 (CPU 16 core, RAM 64 gb, Disk 6x 500 gb
+        Hypervisor: ESXi 7
+        IP: 10.68.11.51 (2x physical uplinks to ToR switch)
+
+Network Allocation:
+         Physical Block                     : 10.68.11.0/24
+         Nest Management Block (VLAN 192)   : 192.168.255.0/24
+         Host-TEP Block (VLAN 16)           : 172.16.255.0/24
+         Edge-TEP Block (VLAN 18)           : 172.18.255.0/24
+         Edge-Uplink Block (VLAN 17)        : 172.17.172.0/24
+         Overlay Segment Block              : 172.31.0.0/16
+         
+1. Create a second vSS "vSwitch-LAB" with 9000 MTU enabled and 1 port group "Trunk-PG" (VLAN 4095)
+2. Setup Jump+AD "win-svr.nest.lab" (10.68.11.50 & 192.168.255.50)
+3. Setup 2x ESXi "ntesxi-0.nest.lab" & "ntesxi-1.nest.lab"
+
+==========================================================================================================
+
+1. Deploy NSX-T Manager appliance (ntnsxtmgr.nest.lab - 192.168.255.99) on physical ESXi
+2. Integrate vCenter (ntvcsa.nest.lab - 192.168.255.100) into the NSX-T Manager
+3. Create 3x Uplink Profiles
+         lab-uplink-profile-v16 (172.16.255.0/24)
+         lab-edge-uplink-profile-v17 ()
+         lab-uplink-profile-v18
