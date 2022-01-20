@@ -20,6 +20,22 @@ Network Allocation:
 1. Deploy NSX-T Manager appliance (ntnsxtmgr.nest.lab - 192.168.255.99) on physical ESXi
 2. Integrate vCenter (ntvcsa.nest.lab - 192.168.255.100) into the NSX-T Manager
 3. Create 3x Uplink Profiles
-         lab-uplink-profile-v16 (172.16.255.0/24)
-         lab-edge-uplink-profile-v17 ()
-         lab-uplink-profile-v18
+        lab-uplink-profile-v16 (172.16.255.0/24)
+        lab-edge-uplink-profile-v17 ()
+        lab-uplink-profile-v18
+4. Create 2x Transport Nodes
+        lab-overlay-transport-zone
+        lab-edge-vlan-transport-zone
+5. Prep Host
+        lab-overlay-transport-zone
+        nsx-default-nioc-hostswitch-profile
+        lab-uplink-profile-v16
+        IP assignment (TEP): DHCP
+6. Create Segment
+        lab-edge-uplink-seg-v17
+        select lab-edge-vlan-transport-zone
+        enter VLAN ID 17
+7. Deploy Edge VM
+        change reservation in the selected form-factor
+        create a single node cluster: lab-edge-cluster
+8. Edge Prep
