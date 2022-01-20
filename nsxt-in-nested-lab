@@ -1,10 +1,10 @@
 Physical Resource:
         Server: 1x DELL R830 (CPU 16 core, RAM 64 gb, Disk 6x 500 gb
         Hypervisor: ESXi 7
-        IP: 10.68.11.51 (2x physical uplinks to ToR switch)
+        IP: 10.X.X.51 (2x physical uplinks to ToR switch)
 
 Network Allocation:
-         Physical Block                     : 10.68.11.0/24
+         Physical Block                     : 10.X.X.0/24
          Nest Management Block (VLAN 192)   : 192.168.255.0/24
          Host-TEP Block (VLAN 16)           : 172.16.255.0/24
          Edge-TEP Block (VLAN 18)           : 172.18.255.0/24
