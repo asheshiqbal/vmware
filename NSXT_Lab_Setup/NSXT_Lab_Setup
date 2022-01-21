@@ -6,8 +6,6 @@ Network Allocation:
          Edge-Uplink Block (VLAN 17)        : 172.17.172.0/24
          Overlay Segment Block              : 172.31.0.0/16
 
-<img src="images/physicalview.jpg" style="zoom:50%;" />
-      
 ==========================================================================================================
 
 1. Deploy NSX-T Manager appliance (ntnsxtmgr.nest.lab - 192.168.255.99) on physical ESXi
@@ -70,5 +68,3 @@ Network Allocation:
                         172.31.{1/2/3}.1/24
         Route advertisement
                 - all connected segments & service ports
-
-<img src="images/topology.jpg" style="zoom:50%;" />
