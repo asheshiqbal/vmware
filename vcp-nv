@@ -20,7 +20,7 @@
 	Underlay/VLAN backed Network - Physical infrastructure, does not need to know about the Overlay network
 	GENEVE - similiar to VXLAN
 		overlay encapsulation protocol, creates a DP tunnel, stretches network over L2 boundary, requires Jumbo MTU (> 1600 bytes) for the Transport VLAN
-		TEP (Tunnel End Point) - host IP created by NSX-T 
+		TEP (Tunnel End Point) - host IP created by NSX-T, uses vmk10 & vmk11 
 		VNI (Virtual Network Identifier) - "overlay VLAN", a network segment similar to VLAN/broadcast domain
 
 *** NSX-T Architecture
@@ -61,3 +61,7 @@
 		SR (Service Router) - N-S routing, located only in edge nodes
 	Route Advertisement - from T1 to T0
 	Route Redistribution - from T0 to Underlay
+
+*** Groups/Tags
+
+	
