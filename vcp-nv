@@ -62,6 +62,7 @@
 	Route Advertisement - from T1 to T0
 	Route Redistribution - from T0 to Underlay
 
-*** Groups/Tags
-
+*** DFW
+	supports Groups/Tags
+	
 	
