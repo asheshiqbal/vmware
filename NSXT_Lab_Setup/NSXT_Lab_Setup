@@ -40,6 +40,7 @@ Network Allocation:
                 router bgp 100
                 neighbor 172.17.172.2 remote-as 100
                 redistribute connected
+                bgp log-neighbor-changes
         at T0 side:
         lab-t0-gateway - Active/Standby
         Interface > Set > Add Interface
