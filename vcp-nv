@@ -64,6 +64,9 @@
 
 *** Services
 	NAT
-		Stateful - SNAT/DNAT
-		Stateless - Reflexive
+		Stateful (active-standby)
+			SNAT - outgoing
+			DNAT - incoming
+		Stateless (active-active)
+			Reflexive NAT - requires configuring NAT rules for both direction
 		
