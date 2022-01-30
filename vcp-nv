@@ -63,7 +63,7 @@
 	Route Redistribution - from T0 to Underlay
 
 *** Services
-	NAT
+	NAT (Network Address Translation)
 		Stateful (active-standby)
 			SNAT - outgoing
 			DNAT - incoming
