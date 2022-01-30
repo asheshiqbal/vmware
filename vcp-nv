@@ -62,7 +62,8 @@
 	Route Advertisement - from T1 to T0
 	Route Redistribution - from T0 to Underlay
 
-*** DFW
-	supports Groups/Tags
-	
-	
+*** Services
+	NAT
+		Stateful - SNAT/DNAT
+		Stateless - Reflexive
+		
