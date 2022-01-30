@@ -9,12 +9,12 @@
 	Microsegmentation - DMZ Anywhere (even at VM's VLAN not only at perimeter)
 	
 *** NSX Terminology
-	Segment - logical switch
+	Segment - logical switch/VNI
+	Compute Manager - vCenter
 	Distributed Logical Router
+	Edge Service Gateway
 	Distributed Firewall (DFW) - East-West
 	Gateway Firewall - North-South
-	Edge Service Gateway
-	Compute Manager - vCenter
 
 *** Overlay Network - a network created on top of underlying physical infra using tunneling between endpoints
 	Underlay/VLAN backed Network - Physical infrastructure, does not need to know about the Overlay network
