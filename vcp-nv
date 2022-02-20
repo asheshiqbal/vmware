@@ -62,11 +62,11 @@
 
 *** Services
 	DNS
-		forwarding
+		forwarding/caching
 		splitting
 	DHCP
-		server
-		relay/proxy
+		server (local server)
+		relay/proxy (remote server)
 	NAT
 		Stateful (active-standby)
 			SNAT - outgoing
@@ -74,3 +74,5 @@
 		Stateless (active-active)
 			Reflexive NAT - requires configuring NAT rules for both direction
 		
+*** DFW (Distributed Firewall) - East-West
+
