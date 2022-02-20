@@ -1,0 +1,62 @@
+!
+!
+hostname nest-lab-router
+!
+!
+enable password Password@123
+!
+!
+ip dhcp pool TEP-VLAN
+ network 172.16.255.0 255.255.255.0
+ dns-server 192.168.255.50
+ default-router 172.16.255.1
+!
+!
+interface Loopback0
+ no ip address
+!
+interface GigabitEthernet1
+ no ip address
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet1.16
+ description TEP-VLAN
+ encapsulation dot1Q 16
+ ip address 172.16.255.1 255.255.255.0
+!
+interface GigabitEthernet1.17
+ description EDGE-UPLINK-VLAN
+ encapsulation dot1Q 17
+ ip address 172.17.172.1 255.255.255.0
+!
+interface GigabitEthernet1.18
+ description EDGE-TEP-VLAN
+ encapsulation dot1Q 18
+ ip address 172.18.255.1 255.255.255.0
+!
+interface GigabitEthernet1.192
+ description MGMT-VLAN
+ encapsulation dot1Q 192 native
+ ip address 192.168.255.1 255.255.255.0
+!
+interface GigabitEthernet2
+ no ip address
+ shutdown
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+router bgp 100
+ bgp log-neighbor-changes
+ redistribute connected
+ neighbor 172.17.172.2 remote-as 100
+!
+!
+line con 0
+ stopbits 1
+line vty 0 4
+ no login
+!
+!
