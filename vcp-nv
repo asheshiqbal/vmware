@@ -62,7 +62,11 @@
 
 *** Services
 	DNS
+		forwarding
+		splitting
 	DHCP
+		server
+		relay/proxy
 	NAT
 		Stateful (active-standby)
 			SNAT - outgoing
