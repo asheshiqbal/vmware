@@ -11,8 +11,6 @@
 *** NSX Terminology
 	Segment - logical switch/VNI
 	Compute Manager - vCenter
-	Distributed Logical Router
-	Edge Service Gateway
 	Distributed Firewall (DFW) - East-West
 	Gateway Firewall - North-South
 
