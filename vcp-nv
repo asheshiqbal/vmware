@@ -65,7 +65,7 @@
 *** Services
 	DNS
 	DHCP
-	NAT (Network Address Translation)
+	NAT
 		Stateful (active-standby)
 			SNAT - outgoing
 			DNAT - incoming
