@@ -73,6 +73,10 @@
 			DNAT - incoming
 		Stateless (active-active)
 			Reflexive NAT - requires configuring NAT rules for both direction
-		
+
+*** Groups
+	Static Inclusion based on VM Name, IP Sets, MAC Sets, Logical Switches, Groups, AD Groups
+	Dynamic Inclusion based on Tags, Machine Name, OS Name, Computer Name
+	
 *** DFW (Distributed Firewall) - East-West
 
