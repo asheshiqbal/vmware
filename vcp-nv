@@ -77,6 +77,7 @@
 *** Groups
 	Static Inclusion based on VM Name, IP Sets, MAC Sets, Logical Switches, Groups, AD Groups
 	Dynamic Inclusion based on Tags, Machine Name, OS Name, Computer Name
+	Tags - Tag:Scope (key:value)
 	
 *** DFW (Distributed Firewall) - East-West
 
