@@ -83,5 +83,10 @@
 	Fully distributed and Stateful
 	Can be enforced at per-vNIC level
 	L3/L4 and some L7 inspection
-	VSIP
-	VDPI
+	VSIP - receive and enforce rules
+	VDPI - L7 inspection
+	VSIP Stats
+	dvfilter/vmware-sfw - rule table, connection/state table
+	Policy/Rule - categories processed left to right and rules processed top-down
+		Category: Ethernet > Emergency > Infrastructure > Environment > Application
+		
