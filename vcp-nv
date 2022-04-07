@@ -80,4 +80,8 @@
 	Tags - Tag:Scope (key:value)
 	
 *** DFW (Distributed Firewall) - East-West
-
+	Fully distributed and Stateful
+	Can be enforced at per-vNIC level
+	L3/L4 and some L7 inspection
+	VSIP
+	VDPI
