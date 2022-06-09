@@ -1,0 +1,22 @@
+Allow scripts to run as administrator option:
+$   Set-ExecutionPolicy Unrestricted 
+$   Install-Module -Name VMware.PowerCLI
+$   Set-PowerCLIConfiguration -Scope User -ParticipateInCEIP $true
+
+Create a new software depot using the two bundles:
+$  Add-EsxSoftwareDepot "C:\Users\[USERNAME]\Desktop\net55-r8168-8.045a-napi-offline_bundle.zip", "C:\Users\[USERNAME]\Desktop\VMware-ESXi-6.7.0-8169922-depot.zip"
+
+Next, create a new image profile:
+$  Get-EsxImageProfile
+$  New-EsxImageProfile -CloneProfile ESXi-6.7.0-8169922-standard -name ESXi-6.7.0-8169922-standard-RTL8111 -Vendor Razz 
+$  Set-EsxImageProfile -ImageProfile ESXi-6.7.0-8169922-standard-RTL8111 -AcceptanceLevel CommunitySupported
+
+Add the driver to image profile:
+$  Get-EsxSoftwarePackage | Where {$_.Vendor -eq "Realtek"}
+$  Add-EsxSoftwarePackage -ImageProfile ESXi-6.7.0-81 69922-standard-RTL8111 -SoftwarePackage net55-r8168
+
+And generate the vSphere 6.7 ISO containing the driver:
+$  Export-EsxImageProfile -ImageProfile ESXi-6.7.0-8169922-standard-RTL8111 -ExportToIso -filepath C:\Users\[USERNAME]\Desktop\VMware-ESXi-6.7.0-8169922-RTL8111.iso
+
+
+https://www.youtube.com/watch?v=Vud1suosrBU
